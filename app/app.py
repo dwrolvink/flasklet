@@ -1,16 +1,18 @@
-from flask import Flask, request, jsonify, render_template, send_file
-from flask_restful import Resource, Api
+from flask import Flask, render_template, send_file, g
+from flask_restful import Api
 from flask_cors import CORS
-import requests
 
+# Init app
+# -------------------------------------------------------------
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-# One page website
+# Simple website
 # -------------------------------------------------------------
 @app.route('/')
 def render_homepage():
+    g.title = 'Flasklet'
     return render_template('main/index.html') 
 
 @app.route('/favicon.ico')
@@ -19,12 +21,11 @@ def render_favicon():
 
 # Simple API
 # -------------------------------------------------------------
-class getBackgroundColor(Resource):
-    def get(self):
-        return jsonify({"bg_color": "#2AABF9"}) 
+from app_api import *
+api_prefix = '/api/v1'
+api.add_resource(getBackgroundColor, api_prefix+'/background_color')
 
-# Add API resources
-api.add_resource(getBackgroundColor, '/background_color')
-
+# Run
+# -------------------------------------------------------------
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

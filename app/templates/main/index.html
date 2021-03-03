@@ -1,8 +1,17 @@
 {% extends "base.html" %}
+
+{% block extra_js %}
+    <script src="/static/js/block.js"></script>
+{%endblock %}
+
 {% block content %}
 
 <div class="block-collection">
-    <div class="block" onclick="hi(this);">&nbsp;</div>
+    <div class="block" onclick="onclick_block(this)">&nbsp;</div>
+    <div class="block" onclick="onclick_block(this)">&nbsp;</div>
+    <div class="block" onclick="onclick_block(this)">&nbsp;</div>
+    <div class="block" onclick="onclick_block(this)">&nbsp;</div>
+    <div class="block" onclick="onclick_block(this)">&nbsp;</div>
 </div>
 
 {% endblock %}
