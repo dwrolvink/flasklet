@@ -2,8 +2,8 @@ version: "3"
 
 services:
   pymander-dev:
-    container_name: doit
-    image: dwrolvink/doit:latest
+    container_name: flasklet
+    image: dwrolvink/flasklet:latest
     ports:
       - target: 5000
         published: 8080
