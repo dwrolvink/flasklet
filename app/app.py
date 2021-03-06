@@ -15,6 +15,11 @@ def render_homepage():
     g.title = 'Flasklet'
     return render_template('main/index.html') 
 
+@app.route('/cat')
+def render_page2():
+    g.title = 'Flasklet - Cat'
+    return render_template('main/cat.html')    
+
 @app.route('/favicon.ico')
 def render_favicon():
     return send_file('static/fav.png', mimetype='image/png')
